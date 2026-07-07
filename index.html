@@ -278,6 +278,51 @@
   .book-title { font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--parchment); margin-bottom: 0.4rem; }
   .book-desc { font-size: 0.95rem; color: var(--smoke); line-height: 1.6; }
 
+  .synopsis-wrap { position: relative; }
+  .synopsis-text:not(.is-hidden) { cursor: pointer; }
+  .synopsis-text.is-hidden {
+    filter: blur(7px);
+    user-select: none;
+    pointer-events: none;
+  }
+  .reveal-synopsis-btn {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 3.5rem;
+    background:
+      linear-gradient(135deg, rgba(24,19,30,0.94), rgba(13,11,15,0.97));
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(184,149,90,0.45);
+    clip-path: polygon(
+      14px 0, calc(100% - 14px) 0, 100% 14px,
+      100% calc(100% - 14px), calc(100% - 14px) 100%,
+      14px 100%, 0 calc(100% - 14px), 0 14px
+    );
+    color: var(--gold-light);
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5rem;
+    transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  .reveal-synopsis-btn:hover,
+  .reveal-synopsis-btn:focus-visible {
+    background:
+      linear-gradient(135deg, rgba(35,27,44,0.96), rgba(20,16,26,0.98));
+    color: var(--parchment);
+    border-color: rgba(212,174,114,0.75);
+  }
+
   /* BIO */
   .bio-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
   .bio-portrait-frame {
@@ -556,7 +601,7 @@
         </div>
         <div class="book-info">
           <div class="book-title">Impenetrable</div>
-          <p class="book-desc">In a world where everyone has a superpower, Nevissi tracks down her fathers killer and mothers kidnapper using her powers of invisibility. But the supernatural killer has a secret that will make his capture all the more difficult.</p>
+          <p class="book-desc">In a world where everyone has a superpower, Nevissi tracks down her father's killer and mother's kidnapper using her powers of invisibility. But the supernatural killer has a secret that will make his capture all the more difficult.</p>
         </div>
       </div>
 
@@ -570,7 +615,10 @@
         </div>
         <div class="book-info">
           <div class="book-title">Paired</div>
-          <p class="book-desc">The second book in the “Impenetrable” series follows Nevissi as she searches to find the new serial killer targeting children in the city of Castledome. While she initially does not suspect her father’s killer, she learns that he was just a small part of a bigger plot.</p>
+          <div class="synopsis-wrap">
+            <p class="book-desc synopsis-text is-hidden" id="synopsis-paired" onclick="hideSynopsis('synopsis-paired')">The second book in the “Impenetrable” series follows Nevissi as she searches to find the new serial killer targeting children in the city of Castledome. While she initially does not suspect her father’s killer, she learns that he was just a small part of a bigger plot.</p>
+            <button type="button" class="reveal-synopsis-btn" onclick="revealSynopsis('synopsis-paired', this)">Read book synopsis</button>
+          </div>
         </div>
       </div>
 
@@ -584,7 +632,10 @@
         </div>
         <div class="book-info">
           <div class="book-title">Control</div>
-          <p class="book-desc">The final installment of the “Impenetrable” series follows Nevissi as she tackles a world where a previously annihilated power is released once again. As people with the power to control others minds descend upon Castledome and come after Nevissi, she and her group of friends must find a way to protect themselves and those around them. With everything at stake, the team will have to be creative with their powers to defeat those who can Control.</p>
+          <div class="synopsis-wrap">
+            <p class="book-desc synopsis-text is-hidden" id="synopsis-control" onclick="hideSynopsis('synopsis-control')">The final installment of the “Impenetrable” series follows Nevissi as she tackles a world where a previously annihilated power is released once again. As people with the power to control others minds descend upon Castledome and come after Nevissi, she and her group of friends must find a way to protect themselves and those around them. With everything at stake, the team will have to be creative with their powers to defeat those who can Control.</p>
+            <button type="button" class="reveal-synopsis-btn" onclick="revealSynopsis('synopsis-control', this)">Read book synopsis</button>
+          </div>
         </div>
       </div>
 
@@ -680,7 +731,7 @@
     <div class="page-header-content">
       <div class="page-eyebrow">Archive</div>
       <h1 class="page-title">Previous Writings</h1>
-      <p class="page-desc">Articles, essays, and features from across the years — a record of what was worth saying.</p>
+      <p class="page-desc">An archive of some of Cameron's writings from throughout the years</p>
     </div>
   </div>
 
@@ -754,7 +805,7 @@
               <li class="article-item"><a href="https://universe.byu.edu/2016/11/10/people-of-color-against-trump-protest-outside-jfsb/" target="_blank" rel="noopener" class="article-link"><span class="article-title">People of color against Trump protest outside JFSB</span></a></li>
               <li class="article-item"><a href="https://universe.byu.edu/2016/11/15/orem-police-responded-quickly-to-high-school-stabbing/" target="_blank" rel="noopener" class="article-link"><span class="article-title">Orem police responded quickly to high school stabbing</span></a></li>
               <li class="article-item"><a href="http://universe.byu.edu/2018/03/21/byu-meal-plans-compare-utah-universities/" target="_blank" rel="noopener" class="article-link"><span class="article-title">BYU meal plans compare to Utah universities</span></a></li>
-              <li class="article-item"><a href="https://universe.byu.edu/camilla-stimpson?page=1" target="_blank" rel="noopener" class="article-link"><span class="article-title">More articles by Camilla Stimpson</span></a></li>
+              <li class="article-item"><a href="https://universe.byu.edu/camilla-stimpson?page=1" target="_blank" rel="noopener" class="article-link"><span class="article-title">more articles by Cameron Stimpson</span></a></li>
             </ul>
           </div>
         </div>
@@ -800,6 +851,22 @@
 
 
 <script>
+  // ── SYNOPSIS REVEAL ──
+  function revealSynopsis(id, btn) {
+    const text = document.getElementById(id);
+    if (text) text.classList.remove('is-hidden');
+    if (btn) btn.style.display = 'none';
+  }
+
+  function hideSynopsis(id) {
+    const text = document.getElementById(id);
+    if (!text || text.classList.contains('is-hidden')) return;
+    text.classList.add('is-hidden');
+    const wrap = text.closest('.synopsis-wrap');
+    const btn = wrap ? wrap.querySelector('.reveal-synopsis-btn') : null;
+    if (btn) btn.style.display = '';
+  }
+
   // ── PAGE SWITCHER ──
   function showPage(name, scrollTarget) {
     // Hide all pages
